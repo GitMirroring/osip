@@ -1531,7 +1531,10 @@ static int sdp_message_parse_m(sdp_message_t *sdp, char *buf, char **next) {
     char *str;
     int more_space_before_crlf;
 
-    space = strchr(tmp + 1, ' ');
+    space = NULL;
+    if (tmp[0] != '\0') {
+      space = strchr(tmp + 1, ' ');
+    }
 
     if (space == NULL)
       more_space_before_crlf = 1;
